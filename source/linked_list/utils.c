@@ -26,8 +26,32 @@ const char *print_list(ListNode *head)
     snprintf(list_str+strlen(list_str), 1024, "\n");
     return list_str;
 }
+const char *print_no_head_list(ListNode *head)
+{
+    static char list_str[1024];
+    memset(list_str, 0, sizeof(list_str));
+    if (head == NULL)
+        return "Nil";
+    
+    ListNode *p = head;
+    while(p)
+    {
+        if (p->next == NULL) //最后一个节点
+        {
+            snprintf(list_str+strlen(list_str), 1024, "%d", p->value);
+            break;
+        }
+        else
+        {
+            snprintf(list_str+strlen(list_str), 1024, "%d->", p->value);
+            p = p->next;
+        }
+    }
+    snprintf(list_str+strlen(list_str), 1024, "\n");
+    return list_str;
+}
 
-static ListNode* create_list_node(int value)
+ListNode* create_list_node(int value)
 {
     // printf("create_list_node: %d\n", value);
     ListNode* node = (ListNode*)malloc(sizeof(ListNode));

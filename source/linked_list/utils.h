@@ -22,11 +22,13 @@ struct list_op
   const char* (*print_after)();
 };
 
+ListNode* create_list_node(int value);
 void delete_list_node(ListNode* node);
 ListNode* create_list(int *arr, int len);
 int insert_node(ListNode *head, int value, int position);
 int delete_node(ListNode *head, int value);
 const char* print_list(ListNode *head);
+const char *print_no_head_list(ListNode *head);
 
 int64_t get_system_time_us();
 int read_array_from_file(const char *file_path, int** array, int *n_array, int line);

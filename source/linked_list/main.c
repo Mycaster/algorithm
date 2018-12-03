@@ -18,7 +18,7 @@ extern const struct list_op s_merge_sorted_list_op;
 static op_func_map s_func_map[]=
 {
   	{REVERSE_LIST, 		"反转单链表",    (struct list_op*)&s_reverse_op},
-  	{MERGE_SORTED_LIST, "合并有序单链表", (struct list_op*)&s_merge_sorted_list_op}
+  	{MERGE_SORTED_LIST, "合并有序单链表(递归)", (struct list_op*)&s_merge_sorted_list_op}
 };
 static size_t s_func_map_size = sizeof(s_func_map)/sizeof(s_func_map[0]);
 static char* op_func_name_print()
@@ -47,11 +47,10 @@ static void print_help()
 
 static int show_detail = 0;
 static int op_type = 0;
-
 int main(int argc, char *argv[])
 {
     int opt;
-    while((opt =getopt(argc,argv,"t:dh"))!= -1)
+    while((opt =getopt(argc,argv,"t:dha:"))!= -1)
     {
 		switch (opt) 
 		{

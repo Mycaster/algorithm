@@ -55,9 +55,8 @@ static int merge_sorted_list_init()
     }
     return 0;
 }
-
 //递归
-static ListNode* merge_two_list(ListNode *l1, ListNode* l2)
+ListNode* merge_two_list(ListNode *l1, ListNode* l2)
 {
     if (l1==NULL)
         return l2;
@@ -77,6 +76,59 @@ static ListNode* merge_two_list(ListNode *l1, ListNode* l2)
     }
     return result;
 }
+//非递归
+static ListNode* merge_two_list2(ListNode *l1, ListNode* l2)
+{
+    if (l1==NULL)
+        return l2;
+    if (l2==NULL)
+        return l1;
+
+    //建一个虚拟的头节点
+    ListNode head = {0, NULL};
+    ListNode* tail = NULL;
+    while(l1 && l2)
+    {
+        if (l1->value < l2->value)
+        {
+            //更新第一个尾节点
+            if (tail == NULL)
+            {
+                tail = l1;
+                head.next = tail; 
+            }
+            else
+            {
+                tail->next = l1;
+                tail = tail->next;
+            }
+            l1 = l1->next;
+        }
+        else
+        {
+            if (tail == NULL)
+            {
+                tail = l2;
+                head.next = tail;
+            }
+            else
+            {
+                tail->next = l2;
+                tail = tail->next;
+            }
+            l2 = l2->next;
+        }
+        // printf("list1: %s", print_no_head_list(l1));
+        // printf("list2: %s", print_no_head_list(l2));
+        // printf("head: %s", print_no_head_list(head));
+    }
+    if (l1)
+        tail->next = l1;
+    if (l2)
+        tail->next = l2;
+    
+    return head.next;
+}
 
 static int merge_sorted_list_run()
 {
@@ -91,7 +143,7 @@ static int merge_sorted_list_run()
     ListNode* l1 = head1->next;
     ListNode* l2 = head2->next;
     delete_list_node(head2);
-    head1->next = merge_two_list(l1, l2);
+    head1->next = merge_two_list2(l1, l2);
     return 0;
 }
 
