@@ -5,9 +5,15 @@
 
 运行排序算法，在 source/sort 下执行
 ```
-chmod a+x ./gen_data.sh; 
 make clean; make
 ../bin/sortwrk -h
 ```
+### 链表
+包括反转单链表、合并有序链表等。
 
+运行链表算法，在 source/linked_list 下执行
+```
+make clean; make
+../bin/listopwrk -h
+```
 ### 后续一些 leetcode 算法解答待更新
