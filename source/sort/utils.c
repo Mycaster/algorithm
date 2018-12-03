@@ -3,22 +3,6 @@
 #include <stdlib.h>
 #include <sys/time.h>
 
-void print_help()
-{
-  printf("======================================\n");
-  printf("sortwrk usage():\n");
-  printf("-t : 选择排序算法\n");
-  printf("     1: 插入排序\n");
-  printf("     2: 快速排序\n");
-  printf("     3: 堆排序\n");
-  printf("-f : 输入数据文件的路径[deafult ./testdata.txt]\n");
-  printf("-d : 打印排序前后数组[default 0]\n\n");
-  printf("examples:\n");
-  printf("     sortwrk -t 1 -f ./testdata.txt -d\n");
-  printf("=======================================\n\n\n");
-}
-
-
 void swap(int *a, int *b)
 {
     int t = *a;
@@ -51,6 +35,8 @@ int read_array_from_file(const char *file_path, int** array, int *n_array)
     printf("filepath not invalid!! \n");
     return -1;
 	}
+  if (array == NULL || n_array == NULL)
+    return -1;
 
 	int *test_array = NULL;
 	int n_test_array = 0;

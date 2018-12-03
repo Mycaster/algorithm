@@ -1,8 +1,13 @@
 #include "utils.h"
 
-//[0...len-1]
+/**
+ * 插入排序
+*/
 int insert_sort(int *arr, int len)
 {
+	if (arr == NULL || len == 0)
+		return -1;
+
 	//从第二个元素开始
 	for (int j=1; j < len; j++)
 	{
@@ -17,5 +22,5 @@ int insert_sort(int *arr, int len)
 		//将 a[j] 放在这个地方，这里之所以i+1 是因为while 中进行了最后一次 i--
 		arr[i+1] = key;
 	}
-    return 0;
+	return 0;
 }
