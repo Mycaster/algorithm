@@ -2,12 +2,12 @@
 #define UTILS_H
 
 #include <unistd.h>
+#include <sys/time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #define int64_t long int
-
 
 void swap(int *a, int *b);
 void print_array(const char* str, const int *arr, int len);

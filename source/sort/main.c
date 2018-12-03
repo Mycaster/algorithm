@@ -32,19 +32,18 @@ static sort_func_map s_func_map[]=
 static size_t s_func_map_size = sizeof(s_func_map)/sizeof(s_func_map[0]);
 static char* sort_func_name_print()
 {
-  static char name[1024]={0};
+  static char name[1024]={0}; //1024 enough
+  memset(name, 0, sizeof(name));
   for (int i = 0; i < s_func_map_size; i++)
   {
-    char n[128]; //128 enough 
-    snprintf(n, 128, "\t%d: %s\n", (int)s_func_map[i].type, s_func_map[i].algorithm_name);
-    snprintf(name+strlen(name), 1024, "%s", n);
+    snprintf(name+strlen(name), 1024, "\t%d: %s\n", (int)s_func_map[i].type, s_func_map[i].algorithm_name);
   }
   return name;
 }
 
 static void print_help()
 {
-  printf("=============================================\n");
+  printf("\n\n==============================================\n");
   printf("sortwrk usage():\n");
   printf("-t : 选择排序算法\n");
   printf("%s", sort_func_name_print());
@@ -52,7 +51,7 @@ static void print_help()
   printf("-d : 打印排序前后数组[default 0]\n\n");
   printf("examples:\n");
   printf("     sortwrk -t 1 -f ./testdata.txt -d\n");
-  printf("=============================================\n\n\n");
+  printf("==============================================\n\n\n");
 }
 
 
@@ -63,7 +62,7 @@ static char *file_path = "./testdata.txt"; //default file path
 int main(int argc, char *argv[])
 {
     int opt;
-    while((opt =getopt(argc,argv,"t:f:d"))!= -1)
+    while((opt =getopt(argc,argv,"t:f:dh"))!= -1)
     {
       switch (opt) 
       {
@@ -76,9 +75,10 @@ int main(int argc, char *argv[])
         case 'd':
           show_detail = 1;
           break;
+        case 'h':
         case '?':
           print_help();
-          break;
+          return 0;
       }
     }
     int*test_array = NULL;
