@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 			op->run();
 			int64_t end = get_system_time_us();
 		
-			printf("%s, 耗时[%ld 微秒]\n", s_func_map[i].op_name, end - start);
+			printf("%s, 耗时[%lld 微秒]\n", s_func_map[i].op_name, end - start);
 			if (show_detail)
 			{
 				printf("\n操作后的数据:\n%s", op->print_detail());

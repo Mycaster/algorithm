@@ -29,34 +29,34 @@ static int reverse_list_init()
     return 0;
 }
 
-// static ListNode *rever
-
 static int reverse_list_run()
 {
     if (head==NULL)
         return -1;
 
-    ListNode *p = head->next;
-    head->next = NULL;
-
-    while(p)
-    {
-        ListNode* cur = p;
-        ListNode* next = p->next;
-        
-        if (p->next)
-        {
-        }
-        else
-        {
-            p-
-        }
-        
-        
-    }
-
-
+    /**
+     * 只需要考虑 reverse 的那2个节点，也就是 prev->curr  变成 prev<-curr
+    */
+    ListNode *prev = NULL; //将第一个节点之前的节点用一个虚拟的NULL节点表示，会简单很多
+    ListNode* curr = head->next;//保存第一个节点
+    head->next = NULL; //将头节点独立出来
     
+    while(curr)
+    {
+        //reverse 之前，先保存 curr 的下一个节点，防止reverse 之后断链
+        ListNode *next = curr->next;
+        curr->next = prev; // reverse 操作
+
+        //没有下一个节点，说明当前节点为原列表的最后一个节点
+        if (next==NULL)
+        {
+            head->next = curr; //头节点指向原列表的最后一个节点
+            break;
+        }
+        //指针前移，更新 prev 和 curr
+        prev = curr;
+        curr = next;
+    }
     return 0;
 }
 

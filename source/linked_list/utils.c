@@ -36,6 +36,14 @@ static ListNode* create_list_node(int value)
     return node;
 }
 
+static void delete_list_node(ListNode* node)
+{
+    if (node)
+    {
+        free(node);
+    }
+}
+
 //带头链表
 ListNode* create_list(int *arr, int len)
 {
@@ -53,6 +61,15 @@ ListNode* create_list(int *arr, int len)
         p = p->next;
     }
     return head;
+}
+void destory_list(ListNode *head)
+{
+    while(head)
+    {
+        ListNode* tmp = head;
+        delete_list_node(tmp);
+        head = head->next;
+    }
 }
 
 //插入
