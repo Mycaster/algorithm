@@ -1,4 +1,4 @@
-DIRS = sort
+DIRS = sort linked_list
 all:
 	@for i in ${DIRS}; \
 	do \

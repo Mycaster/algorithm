@@ -18,9 +18,11 @@ struct list_op
 {
   int   (*init)();
   int   (*run)();
-  const char* (*print_detail)();
+  const char* (*print_before)();
+  const char* (*print_after)();
 };
 
+void delete_list_node(ListNode* node);
 ListNode* create_list(int *arr, int len);
 int insert_node(ListNode *head, int value, int position);
 int delete_node(ListNode *head, int value);

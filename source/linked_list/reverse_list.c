@@ -7,6 +7,7 @@ const struct list_op s_reverse_op =
 {
     reverse_list_init,
     reverse_list_run,
+    reverse_list_print,
     reverse_list_print
 };
 

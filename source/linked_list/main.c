@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
 			}
 			if (show_detail)
 			{
-				printf("\n操作前的数据:\n%s", op->print_detail());
+				printf("\n操作前的数据:\n%s", op->print_before());
 			}
 		
 			int64_t start = get_system_time_us();
@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
 			printf("%s, 耗时[%lld 微秒]\n", s_func_map[i].op_name, end - start);
 			if (show_detail)
 			{
-				printf("\n操作后的数据:\n%s", op->print_detail());
+				printf("\n操作后的数据:\n%s", op->print_after());
 			}
 			break;
 		}

@@ -36,7 +36,7 @@ static ListNode* create_list_node(int value)
     return node;
 }
 
-static void delete_list_node(ListNode* node)
+void delete_list_node(ListNode* node)
 {
     if (node)
     {
