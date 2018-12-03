@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "reverse_list.h": "c",
+        "utils.h": "c",
+        "stdlib.h": "c",
+        "merge_sorted_list.h": "c",
+        "stdio.h": "c",
+        "string.h": "c"
+    }
+}
