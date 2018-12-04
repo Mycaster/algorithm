@@ -56,7 +56,7 @@ static int merge_sorted_list_init()
     return 0;
 }
 //递归
-ListNode* merge_two_list(ListNode *l1, ListNode* l2)
+ListNode* merge_two_list_recursion(ListNode *l1, ListNode* l2)
 {
     if (l1==NULL)
         return l2;
@@ -67,17 +67,17 @@ ListNode* merge_two_list(ListNode *l1, ListNode* l2)
     if (l1->value < l2->value)
     {
         result = l1;
-        result->next = merge_two_list(l1->next, l2);
+        result->next = merge_two_list_recursion(l1->next, l2);
     }
     else
     {
         result = l2;
-        result->next = merge_two_list(l1, l2->next);
+        result->next = merge_two_list_recursion(l1, l2->next);
     }
     return result;
 }
 //非递归
-static ListNode* merge_two_list2(ListNode *l1, ListNode* l2)
+ListNode* merge_two_list(ListNode *l1, ListNode* l2)
 {
     if (l1==NULL)
         return l2;
@@ -143,7 +143,7 @@ static int merge_sorted_list_run()
     ListNode* l1 = head1->next;
     ListNode* l2 = head2->next;
     delete_list_node(head2);
-    head1->next = merge_two_list2(l1, l2);
+    head1->next = merge_two_list(l1, l2);
     return 0;
 }
 

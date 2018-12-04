@@ -3,7 +3,8 @@
 typedef enum OP_TYPE
 {
 	REVERSE_LIST = 1,
-  	MERGE_SORTED_LIST = 2
+  	MERGE_SORTED_LIST = 2,
+	FIND_KTH = 3
 }OP_TYPE;
 
 typedef struct op_func_map
@@ -15,10 +16,12 @@ typedef struct op_func_map
 
 extern const struct list_op s_reverse_op;
 extern const struct list_op s_merge_sorted_list_op;
+extern const struct list_op s_find_op;
 static op_func_map s_func_map[]=
 {
   	{REVERSE_LIST, 		"反转单链表",    (struct list_op*)&s_reverse_op},
-  	{MERGE_SORTED_LIST, "合并有序单链表(递归)", (struct list_op*)&s_merge_sorted_list_op}
+  	{MERGE_SORTED_LIST, "合并有序单链表", (struct list_op*)&s_merge_sorted_list_op},
+	{FIND_KTH, 			"查找单链表倒数第k个节点", (struct list_op*)&s_find_op},
 };
 static size_t s_func_map_size = sizeof(s_func_map)/sizeof(s_func_map[0]);
 static char* op_func_name_print()
@@ -89,7 +92,7 @@ int main(int argc, char *argv[])
 			op->run();
 			int64_t end = get_system_time_us();
 		
-			printf("%s, 耗时[%lld 微秒]\n", s_func_map[i].op_name, end - start);
+			printf("%s, 耗时[%ld 微秒]\n", s_func_map[i].op_name, end - start);
 			if (show_detail)
 			{
 				printf("\n操作后的数据:\n%s", op->print_after());
