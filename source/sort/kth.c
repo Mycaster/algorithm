@@ -44,11 +44,11 @@ int kth(int *arr, int len, int k)
 			_index = _partition(arr, start, end);
 		}
 	}
-	printf("find kth[%d]\n", k);
+	LOGTRACE("find kth[%d]", k);
 	for (int i = 0; i < k; i++)
 	{
-		printf("%d\t", arr[i]);
+		LOGTRACE("%d", arr[i]);
 	}
-	printf("\n");
+	LOGTRACE();
 	return 0;
 }

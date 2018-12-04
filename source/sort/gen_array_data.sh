@@ -2,7 +2,7 @@
 
 num=$1
 if [ "${num}" == "" ]; then
-	num=1000;  #default 1000 numbers
+	num=10;  #default 1000 numbers
 fi
 
 
